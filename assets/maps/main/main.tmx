@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="2025.04.09" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="25">
- <tileset firstgid="1" source="../../../../Nouveau dossier/Serene_Village_32x32.tsx"/>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="25">
+ <tileset firstgid="1" source="../../SERENE_VILLAGE_REVAMPED/Serene_Village_32x32.tsx"/>
  <layer id="3" name="Calque de Tuiles 3" width="30" height="20" locked="1">
   <data encoding="csv">
 5,5,4,4,5,6,4,5,6,4,5,6,4,4,5,4,5,6,6,5,6,6,4,5,6,4,5,6,5,6,
