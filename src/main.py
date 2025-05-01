@@ -1,8 +1,9 @@
-import pygame
+# main.py
+
 from game import Game
+from ui import main_menu
 
 if __name__ == "__main__":
-    pygame.init()
-    #pygame.joystick.init()
-    game = Game()
-    game.run()
+    if main_menu():
+        game = Game()
+        game.run()

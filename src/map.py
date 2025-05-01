@@ -1,3 +1,5 @@
+from ui import death_screen
+
 from dataclasses import dataclass
 import pygame, pytmx, pyscroll
 import os.path
@@ -74,10 +76,18 @@ class MapManager:
     # Set the current map and register it if it doesn't exist yet
     def set_current_map(self, name, spawn_point="main"):
         print("************", self, name)
+        if (name == "drown" or name == "drown1" or name == "drown2"):
+            if(death_screen("bloup bloup bloup")):
+                self.current_map = "main"
+                print("Spawning to:", spawn_point)
+                self.spawn(spawn_point)
+                print("loaded main to restart ")
+
         if name not in self.maps:
             print("Map not found: ", name)
             return None
         else:
+
             # lazy load the map
             print("Lazy loading map: ", name)
 
@@ -88,13 +98,13 @@ class MapManager:
             print("Spawning to:", spawn_point)
             self.spawn(spawn_point)
 
-            if self.get_map().music:  # load music from thu current map's folder
-                pygame.mixer.music.load(self.get_map().music)
-            else:
-                print("No music")
+            # if self.get_map().music:  # load music from thu current map's folder
+            #     pygame.mixer.music.load(self.get_map().music)
+            # else:
+            #     print("No music") #TODO
 
-            if PLAY_MUSIC:
-                pygame.mixer.music.play(-1)
+            # if PLAY_MUSIC:
+            #     pygame.mixer.music.play(-1)
 
     def debug(self, map):
         for portal in self.maps[map].portals:
@@ -184,9 +194,13 @@ class MapManager:
                 obstacles.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
         map.obstacles = obstacles
 
-        # Dessiner les différents calques
-        group = pyscroll.PyscrollGroup(map_layer=map_layer, default_layer=7)
-        group.add(self.player)
+        # # Dessiner les différents calques
+        # group = pyscroll.PyscrollGroup(map_layer=map_layer, default_layer=7)
+        # group.add(self.player)
+        # map.group = group
+        # map.loaded = True
+        group = pyscroll.PyscrollGroup(map_layer=map_layer, default_layer=3)  # default layer for NPCs/items
+        group.add(self.player, layer=2)  # Player below canopy (assuming canopy is on layer 4 or 5 in Tiled)
         map.group = group
         map.loaded = True
 

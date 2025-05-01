@@ -1,5 +1,4 @@
 import pygame
-
 from map import MapManager
 from player import Player
 
@@ -8,7 +7,7 @@ class Game:
     def __init__(self):
         # Démarrage
         self.running = True
-        self.screen = pygame.display.set_mode((600,600))
+        self.screen = pygame.display.set_mode((600,400))
         pygame.display.set_caption("Intro-PyGame")
 
         # Générer un joueur
@@ -30,13 +29,13 @@ class Game:
 
         # handle joypad and joystick events
 
-        if pressed[pygame.K_UP] or pressed[pygame.K_z]:
+        if pressed[pygame.K_UP] or pressed[pygame.K_w]:
             self.player.move_up()
         elif pressed[pygame.K_DOWN] or pressed[pygame.K_s]:
             self.player.move_down()
         elif pressed[pygame.K_RIGHT] or pressed[pygame.K_d]:
             self.player.move_right()
-        elif pressed[pygame.K_LEFT] or pressed[pygame.K_q]:
+        elif pressed[pygame.K_LEFT] or pressed[pygame.K_a]:
             self.player.move_left()
 
         if pressed[pygame.K_SPACE]:
